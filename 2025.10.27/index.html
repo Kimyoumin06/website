@@ -6,6 +6,41 @@
     <title>Document</title>
 </head>
 <body>
+    <p>
+        <!-- 단일 소스 제공 방식 -->
+        <audio src="song.mp3" controls></audio>
+
+        <!-- 여러 소스 제공 방식 -->
+        <audio controls>
+            <source src="song.mp3" type="audio/mpeg">
+            <source src="song.ogg" type="audio/ogg">
+        </audio>
+    </p>
+
+
+    <p>
+    <h2>오디오 삽입 예제</h2>
+    <audio src="song.mp3" controls>
+        브라우저가Audio 태그를 지원하지 않습니다.
+    </audio>
     
+    <audio controls autoplay>
+        <source src="song.mp3" type="audio/mpeg">
+        <source src="song.wav" type="audio/wav">
+        <source src="song.ogg" type="audio/ogg">
+        브라우저가 Audio 태그를 지원하지 않습니다.
+    </audio>
+    </p>
+
+    <h2>비디오 삽입 예제</h2>
+    <video src="green.mp4" width="640" height="360" controls>
+        브라우저가 video 태그를 지원하지 않습니다.
+    </video>
+
+    <video width="640" height="360" controls>
+        <source src="green.mp4" type="video/mp4">
+        <source src="green.webm" type="video/webm">
+        <source src="green.ogv" type="video/ogg">
+    </video>
 </body>
 </html>
