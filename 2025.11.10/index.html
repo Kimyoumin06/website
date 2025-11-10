@@ -6,6 +6,18 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <form action="https://httpbin.org/post" method="post">
+        이름: <input type="text" name="uname"><br>
+        비번: <input type="password" name="upwd"><br>
+        나이: <input type="number" name="uage"><br>
+        메일: <input type="email" name="email"><br>
+        성별: <input type="radio" name="gender" value="male">남성
+             <input type="radio" name="gender" value="female">여성<br>
+        취미: 
+            <input type="checkbox" name="habbies" value="music">음악
+            <input type="checkbox" name="habbies" value="sports">운동<br>
+        
+            <button type="submit">제출</button>
+    </form>
 </body>
 </html>
