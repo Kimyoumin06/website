@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>쿠키런 알아보기</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: 'Helvetica Neue', sans-serif;
+            color: white;
+        }
+
+        .video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+        }
+
+        #bgVideo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* 영상이 화면을 꽉 채우도록 설정 */
+        }
+
+        .content-overlay {
+            height: 100%;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.5); /* 반투명 검은색 배경 */
+        }
+
+        .content-box {
+            max-width: 800px;
+            padding: 40px;
+            text-align: center;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* 텍스트 그림자 */
+        }
+
+        h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 2em;
+            margin-top: 40px;
+            border-bottom: 2px solid white;
+            padding-bottom: 10px;
+            display: inline-block;
+        }
+
+        p {
+            font-size: 1.2em;
+            line-height: 1.6;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <div class="video-background">
+        <!-- 가지고 있는 비디오 파일 경로를 입력해주세요 -->
+        <video autoplay muted loop id="bgVideo">
+            <source src="video/background.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <div class="content-overlay">
+        <div class="content-box">
+            <h1>쿠키런의 세계</h1>
+            <h2>탄생 배경</h2>
+            <p>쿠키런은 우리에게 친숙한 서양 동화 '진저브레드 맨(The Gingerbread Man)'에서 영감을 받아 탄생했습니다. 오븐에서 구워진 진저브레드 맨이 "나를 잡을 수 없어!"라고 외치며 도망가는 이야기처럼, 쿠키런의 용감한 쿠키 역시 마녀의 오븐에서 탈출하며 모험을 시작합니다.</p>
+            <h2>줄거리</h2>
+            <p>마녀가 쿠키를 구워 잡아먹으려는 순간, 생명을 얻은 '용감한 쿠키'가 오븐을 탈출하면서 쿠키들의 대모험이 시작됩니다. 쿠키들은 마녀의 손아귀를 피해 끊임없이 달리며 다양한 세계를 탐험하고, 새로운 친구들을 만나며 함께 위기를 헤쳐나갑니다. 쿠키런의 세계는 오븐을 탈출하는 '오븐브레이크'부터 자신들만의 왕국을 건설하는 '킹덤'까지, 끊임없이 확장되는 이야기를 담고 있습니다.</p>
+        </div>
+    </div>
+</body>
+</html>

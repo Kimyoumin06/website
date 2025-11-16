@@ -1,12 +1,358 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>미스틱플라워 & 다크카카오</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Helvetica Neue', sans-serif;
+            background-color: #fff; /* 기본 흰색 배경 */
+            color: #000; /* 기본 검은색 텍스트 */
+        }
+
+        /* --- 메뉴 스타일 시작 --- */
+        .menu {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 100; /* 다른 요소들 위에 오도록 z-index 설정 */
+            top: 0;
+            right: 0; /* 오른쪽에서 나오도록 수정 */
+            background-color: #111;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+        }
+
+        .menu a {
+            padding: 8px 8px 8px 32px;
+            text-decoration: none;
+            font-size: 25px;
+            color: #818181;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .menu a:hover {
+            color: #f1f1f1;
+        }
+
+        .menu .closebtn {
+            position: absolute;
+            top: 0;
+            right: 25px;
+            font-size: 36px;
+            margin-left: 50px;
+        }
+
+        .hamburger-icon {
+            font-size: 30px;
+            cursor: pointer;
+            position: fixed; /* 화면에 고정 */
+            top: 20px;
+            right: 30px;
+            z-index: 99; /* 메뉴보다는 아래, 다른 콘텐츠보다는 위에 */
+            color: white; /* 헤더 영상 위에서 잘 보이도록 흰색으로 설정 */
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5); /* 그림자 추가 */
+        }
+        /* --- 메뉴 스타일 끝 --- */
+
+        .header-video-container {
+            width: 100%;
+            height: 30vh; /* 뷰포트 높이의 30% */
+            overflow: hidden;
+            position: relative;
+        }
+
+        #headerVideo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* 컨테이너를 꽉 채우도록 설정 */
+            position: absolute;
+            top: 0;
+            left: 0;
+            filter: brightness(80%); /* 영상 밝기 조절 */
+            z-index: 1; /* 다른 콘텐츠 뒤로 보내기 (필요시) */
+        }
+
+        .video-text-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+            z-index: 2; /* 비디오 위에 텍스트를 표시하기 위한 z-index */
+        }
+
+        .video-text-overlay h2 {
+            font-size: 2.5em;
+            margin: 0;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .text-content {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 0 20px;
+            line-height: 1.7;
+        }
+
+        .text-content h3 {
+            font-size: 1.8em;
+            color: #333;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .text-content p {
+            font-size: 1.1em;
+            color: #555;
+            text-align: left;
+        }
+
+        .profile-section {
+            max-width: 800px;
+            margin: 60px auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-left: 5px solid #8d6e63;
+        }
+
+        .profile-section h2 {
+            font-size: 2em;
+            margin-top: 0;
+            color: #5d4037;
+        }
+
+        .profile-section p {
+            font-size: 1.1em;
+            color: #4e4e4e;
+            line-height: 1.8;
+        }
+
+        .top-content {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start; /* 상단 정렬 */
+            gap: 30px;
+            padding: 0 20px;
+            flex-wrap: wrap; /* 화면이 작아지면 아래로 배치 */
+            margin-bottom: 30px;
+        }
+
+        .single-image-container {
+            text-align: center;
+        }
+
+        .single-image {
+            max-width: 400px; /* 이미지 최대 너비 고정 */
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .bottom-image-container {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .bottom-image {
+            max-width: 400px;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .middle-video-container {
+            margin: 40px 0; /* 좌우 여백 제거 */
+            width: 100%; /* 너비를 화면 전체로 설정 */
+            height: 400px; /* 영상의 높이를 고정 */
+            overflow: hidden; /* 컨테이너를 벗어나는 부분 숨기기 */
+            position: relative; /* 자식 요소의 위치 기준으로 설정 */
+        }
+
+        .middle-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* 컨테이너를 꽉 채우면서 비율 유지 (잘림 발생) */
+            position: absolute;
+            top: 0;
+            left: 0;
+            filter: brightness(80%); /* 영상 밝기 조절 */
+        }
+
+        /* 나무위키 스타일 영상 래퍼 */
+        .namu-video-wrapper {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            overflow: hidden;
+            max-width: 640px;
+            width: 100%;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .namu-video-header {
+            background-color: #f8f9fa;
+            padding: 8px 12px;
+            font-weight: bold;
+            border-bottom: 1px solid #ccc;
+            color: #222;
+        }
+
+        /* 반응형 유튜브 영상 컨테이너 */
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* 16:9 비율 */
+            height: 0;
+            overflow: hidden;
+            background-color: #000; /* 영상 로딩 중 검은 배경 */
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .button-container {
+            text-align: center;
+            margin: 50px 0;
+        }
+
+        .nav-button {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: #333;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .nav-button:hover {
+            background-color: #555;
+        }
+    </style>
 </head>
 <body>
-    <img src="MysticFlour.png" alt="Mystic Flour Cookie">
-    <img src="DarkCacao.png" alt="Dark Cacao Cookie">
+    <!-- 햄버거 아이콘 -->
+    <span class="hamburger-icon" onclick="openNav()">&#9776;</span>
+
+    <!-- 메뉴 콘텐츠 -->
+    <div id="myMenu" class="menu">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="../MainPage.html">HOME</a>
+        <a href="Steck.html">작품 알아보기</a>
+        <a href="https://www.youtube.com/@CRKingdomKR" target="_blank">SNS</a>
+    </div>
+
+    <div class="header-video-container">
+        <video autoplay muted loop id="headerVideo">
+            <!-- 영상 파일 경로는 실제 위치에 맞게 수정해주세요 -->
+            <source src="../video/샌드아트.mp4" type="video/mp4">
+        </video>
+        <div class="video-text-overlay">
+            <h2>빅샌드아트 - 미스틱플라워 쿠키</h2>
+        </div>
+    </div>
+    <h1>빅샌드아트란 무엇인가?</h1>
+
+    <div class="top-content">
+        <div class="single-image-container">
+            <img src="MysticFlour.png" alt="Mystic Flour Cookie" class="single-image">
+        </div>
+        <div class="namu-video-wrapper">
+            <div class="namu-video-header">공식 아트 콜라보 트레일러</div>
+            <div class="video-container">
+                <iframe src="https://www.youtube-nocookie.com/embed/F8gR09K3-xo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+    <div class="text-content">
+        <h3>정의</h3>
+        <p>빅샌드아트는 일반적인 샌드아트의 개념을 확장하여, 대규모 스크린이나 공간을 캔버스 삼아 펼쳐지는 웅장한 스케일의 모래 예술입니다. 단순히 손으로 그리는 것을 넘어, 빛과 음악, 그리고 첨단 기술을 결합하여 한 편의 영화와 같은 서사를 만들어내는 것이 특징입니다. 각 모래알이 모여 거대한 이야기를 완성하는 종합 예술이라 할 수 있습니다.</p>
+        <h3>빅샌드아트만의 매력</h3>
+        <p>빅샌드아트의 가장 큰 매력은 '소멸과 생성의 미학'에 있습니다. 하나의 그림이 완성되는 순간, 곧바로 사라지고 새로운 그림이 탄생하는 과정은 보는 이들에게 강렬한 인상을 남깁니다. 또한, 아날로그적인 모래의 질감과 디지털 영상 기술이 만나 만들어내는 독특한 시각적 경험은 다른 어떤 예술 장르에서도 찾아보기 힘든 빅샌드아트만의 장점입니다. 이는 관객에게 단순한 감상을 넘어, 이야기 속에 완전히 몰입하는 경험을 선사합니다.</p>
+    </div>
+
+    <div class="profile-section">
+        <img src="https://pbs.twimg.com/media/GOVI-c2bYAAJ18H.jpg" alt="채승웅 작가" class="profile-image" width="800" height="auto">
+        <div class="profile-text">
+            <h2>빅샌드아티스트 채승웅</h2>
+            <p>채승웅 작가는 대한민국을 대표하는 1세대 샌드 아티스트로, 모래와 빛을 이용해 감동적인 이야기를 만들어내는 것으로 잘 알려져 있습니다. 그의 손끝에서 펼쳐지는 섬세하고 역동적인 표현력은 단순한 그림을 넘어 한 편의 서정적인 시와 같다는 평을 받습니다. 다수의 방송 출연과 국내외 공연을 통해 샌드아트의 대중화에 크게 기여했으며, 전통적인 소재를 현대적인 감각으로 재해석하는 등 끊임없이 새로운 예술적 시도를 이어가고 있습니다.</p>
+        </div>
+    </div>
+
+    <div class="middle-video-container">
+        <video autoplay muted loop class="middle-video">
+            <source src="../video/나전칠기.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="video-text-overlay">
+            <h2>나전칠기 - 다크카카오 쿠키</h2>
+        </div>
+    </div>
+
+    <h1>나전칠기란 무엇인가?</h1>
+
+    <div class="top-content">
+        <div class="single-image-container">
+            <img src="DarkCacao.png" alt="Dark Cacao Cookie" class="single-image">
+        </div>
+        <div class="namu-video-wrapper">
+            <div class="namu-video-header">공식 아트 콜라보 트레일러</div>
+            <div class="video-container">
+                <iframe src="https://www.youtube-nocookie.com/embed/h4I3paFDW0k" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+    <div class="text-content">
+        <h3>정의</h3>
+        <p>나전칠기는 옻칠한 목제품 등의 표면에 영롱한 빛을 내는 자개를 다양한 문양으로 오려내어 붙이는 한국의 전통 공예 기법입니다. '나전'은 소라나 전복 껍데기를 얇게 간 것을 의미하며, '칠기'는 옻칠을 한 그릇을 뜻합니다. 이 두 가지가 결합하여 신비롭고 화려한 아름다움을 만들어냅니다.</p>
+        <h3>나전칠기만의 매력</h3>
+        <p>나전칠기의 가장 큰 매력은 빛의 각도에 따라 무지갯빛으로 다채롭게 변화하는 자개의 영롱함에 있습니다. 깊고 은은한 광택을 내는 옻칠과 반짝이는 자개의 극적인 대비는 화려하면서도 품격 있는 아름다움을 선사합니다. 장인의 섬세한 손길과 오랜 시간을 거쳐 완성되는 만큼, 모든 작품은 세상에 단 하나뿐인 예술품으로서 높은 가치를 지닙니다.</p>
+    </div>
+
+    <div class="profile-section">
+        <img src="https://m.sentv.co.kr/data/sentv/image/news/2024/07/08/1720405239.png" alt="손대현 장인" class="profile-image">
+        <div class="profile-text">
+            <h2>나전칠기 장인 손대현</h2>
+            <p>손대현 장인은 국가무형문화재 나전장 보유자로, 한국 전통 나전칠기 공예의 맥을 잇는 거장입니다. 수십 년간 오직 나전칠기 외길을 걸으며 전통 기법을 계승하고 현대적인 감각으로 발전시키는 데 힘써왔습니다. 그의 작품은 정교하고 섬세한 기술력과 예술적 깊이가 어우러져 한국 공예의 정수를 보여준다는 높은 평가를 받고 있습니다.</p>
+        </div>
+    </div>
+
+    <div class="button-container">
+        <a href="Steck.html" class="nav-button">목록으로 돌아가기</a>
+    </div>
+
+    <script>
+        /* 메뉴를 여는 함수 */
+        function openNav() {
+            document.getElementById("myMenu").style.width = "250px";
+        }
+
+        /* 메뉴를 닫는 함수 */
+        function closeNav() {
+            document.getElementById("myMenu").style.width = "0";
+        }
+    </script>
 </body>
 </html>
