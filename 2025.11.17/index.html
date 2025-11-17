@@ -6,6 +6,29 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <form action="https://httpbin.org/post" method="POST">
+        <label>전화번호:
+            <input type="text" name="phone" pattern="^010-\d{4}-\d{4}$" placeholder="010-1234-5678" required>
+        </label>
+        <input type="submit" value="제출하기">
+    </form>
+
+        <br>
+
+        <form action="https://httpbin.org/post" method="post">
+            <label>전화번호
+                <input type="text" name="phone" pattern="^010-\d{8}$" placeholder="01012345678" required>
+            </label>
+            <input type="submit" value="제출하기">
+        </form>
+        
+        <br>
+
+        <form action="https://httpbin.org/post" method="post">
+            <label>전화번호
+                <input type="text" name="phone" pattern="^01[016789]-\d{3,4}-\d{4}$" placeholder="01012345678" required>
+            </label>
+            <input type="submit" value="제출하기">
+        </form>
 </body>
 </html>
