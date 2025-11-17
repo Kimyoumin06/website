@@ -1,74 +1,72 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>쿠키런으로 알아보는 예술의 세계</title>
     <style>
-        /* 기본 메뉴 스타일 */
-        .menu {
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
             height: 100%;
-            width: 0; /* 처음에는 너비를 0으로 설정하여 보이지 않게 함 */
-            position: fixed;
-            z-index: 1;
-            top: 0;
-            left: 0;
-            background-color: #111; /* 배경색 */
-            overflow-x: hidden; /* 가로 스크롤 숨기기 */
-            transition: 0.5s; /* 부드러운 전환 효과 */
-            padding-top: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f4f4f4;
+            font-family: 'Helvetica Neue', sans-serif;
+            text-align: center;
         }
 
-        .menu a {
-            padding: 8px 8px 8px 32px;
-            text-decoration: none;
-            font-size: 25px;
-            color: #818181;
+        .main-container {
+            max-width: 1000px;
+            width: 90%;
+        }
+
+        h1 {
+            font-size: 2.8em;
+            color: #333;
+            margin-bottom: 50px;
+            font-weight: bold;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            gap: 20px; /* 항목 사이의 간격 */
+        }
+
+        nav a {
             display: block;
-            transition: 0.3s;
+            padding: 20px 30px;
+            background-color: #8B4513; /* 쿠키 색상 */
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            font-size: 1.2em;
+            font-weight: bold;
+            transition: background-color 0.3s, transform 0.2s;
         }
 
-        .menu a:hover {
-            color: #f1f1f1; /* 마우스 호버 시 색상 변경 */
-        }
-
-        .menu .closebtn {
-            position: absolute;
-            top: 0;
-            right: 25px;
-            font-size: 36px;
-            margin-left: 50px;
-        }
-
-        /* 햄버거 아이콘 스타일 */
-        .hamburger-icon {
-            font-size: 30px;
-            cursor: pointer;
+        nav a:hover {
+            background-color: #A0522D; /* 호버 시 약간 밝은 쿠키 색상 */
+            transform: translateY(-5px); /* 위로 약간 이동하는 효과 */
         }
     </style>
 </head>
 <body>
-    <!-- 햄버거 아이콘 -->
-    <span class="hamburger-icon" onclick="openNav()">&#9776; 메뉴</span>
-
-    <!-- 메뉴 콘텐츠 -->
-    <div id="myMenu" class="menu">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <a href="SerchCookie.html">쿠키런 알아보기</a>
-        <a href="CookieArt/Steck.html">작품 보러가기(Steck)</a>
-        <a href="https://www.youtube.com/@CRKingdomKR" target="_blank">SNS</a>
+    <div class="main-container">
+        <h1>쿠키런으로 알아보는 예술의 세계</h1>
+        <nav>
+            <ul>
+                <li><a href="SerchCookie.html">쿠키런에 대하여</a></li>
+                <li><a href="CookieArt/Steck.html">예술 작품 보러가기</a></li>
+                <li><a href="https://www.youtube.com/@CRKingdomKR" target="_blank">SNS</a></li>
+            </ul>
+        </nav>
     </div>
-
-    <script>
-        /* 메뉴를 여는 함수 */
-        function openNav() {
-            document.getElementById("myMenu").style.width = "250px";
-        }
-
-        /* 메뉴를 닫는 함수 */
-        function closeNav() {
-            document.getElementById("myMenu").style.width = "0";
-        }
-    </script>
 </body>
 </html>
