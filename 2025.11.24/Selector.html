@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+ /* 1. 특정속성이있는요소선택*/
+ [title] { color: green; }
+ /* 2. 정확한값일치*/
+ [type="text"] { background-color: lightyellow;  }
+ /* 3. 공백으로구분된값중포함*/
+ [class~="highlight"] { font-weight: bold; }
+ /* 4. 하이픈(-) 포함언어속성*/
+ [lang|="en"] { border: 10px solid rgb(255, 0, 221);  }
+ /* 5. 특정값으로시작*/  
+[href^="https://"] { color: red; }
+ /* 6. 특정값으로끝남*/
+ [src$=".png"] { border: 5px solid orange; }
+ /* 7. 특정문자열포함*/
+ [data-info*="code"] { background-color:greenyellow; }
+ </style>
+<body>
+    <p title="툴팁입니다.">1. title 속성이 있는 문단</p>
+    <input type="text" value="텍스트 입력">
+    <input type="password" value="비밀번호 입력"><br>
+
+    <input type="date" name="text" value="생년월일 입력">
+
+    <div class="highlight notice">2.강조된 문장</div>
+
+    <p lang="en-US">3.영어로 작성된 문장</p>
+
+    <a href="https://eaxmple.com">4.보안 링크</a><br>
+
+    <img src="logobot.png" width="100px" height="150px" alt="이미지"><br>
+
+    <div data-info="this-is-code-sample">5.코드 정보 포함</div>
+</body>
+</html>
