@@ -4,8 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        .parent{
+            color: red;
+            background-color: yellow;
+            font-size: 20px;
+            border: 5px solid green;
+            padding: 30px;
+        }
+        .child{
+            padding: 5px;
+            background-color: white;
+        }
+        .forced-inherit{
+            background-color: inherit;
+            border: inherit;
+        }
+        .unset-example{
+            background-color: unset;
+            border: unset;
+        }
+    </style>
 </head>
 <body>
-    
+    <div class="parent">
+        <p class="child">나는 자식 요소입니다.</p>
+    </div><br>
+    <div class="parent">
+        <p class="child forced-inherit">
+            강제로 상속된 자식 요소(border와 배경도 상속됨)
+        </p></div><br>
+        <div class="parent">
+            <p class="child unset-example">
+                <code>unset</code>사용:
+                베걍과 테투리는 초기값으로 리셋
+            </p>
+        </div>
 </body>
 </html>

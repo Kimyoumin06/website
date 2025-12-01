@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .none{ text-decoration: none; }
+        .underline{ text-decoration: underline; }
+        .overline{ text-decoration: overline; }
+        .line-through{ text-decoration: line-through; }
+        .combo{ text-decoration: underline overline; }
+        .fancy{ text-decoration: underline wavy red; }
+
+        .capitalize{
+            text-transform: capitalize;
+        }
+        .uppercase{
+            text-transform: uppercase;
+        }
+        .lowercase{
+            text-transform: lowercase;
+        }
+        .full-width{
+            text-transform: full-width;
+        }
+
+        .example{
+            font-size: 24px;
+            border-bottom: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        .letter{
+            letter-spacing: 4px;
+        }
+        .word{
+            word-spacing: 20px;
+        }
+        .both{
+            letter-spacing: 2px;
+            word-spacing: 15px;
+        }
+    </style>
+</head>
+<body>
+    <p class="none">선없음</p>
+    <p class="underline">밑줄</p>
+    <p class="overline">윗줄</p>
+    <p class="line-through">취소선</p>
+    <p class="combo">밑줄 + 윗줄</p>
+    <p class="fancy">물결 모양의 빨간 밑줄</p>
+
+    <p class="capitalize">hello world</p>
+    <p class="uppercase">hello world</p>
+    <p class="lowercase"> HELLO WORLD</p>
+    <p class="full-width"> HELLO WORLD</p>
+
+    <div class="example letter">Letter spacing example here</div>
+    <div class="example word">Word spacing example here</div>
+    <div class="example both">Both spacing example here</div>
+</body>
+</html>
