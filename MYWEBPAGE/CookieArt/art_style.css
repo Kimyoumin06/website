@@ -88,7 +88,7 @@ h1 {
 
 /* 2.Burning&GoldenCheese.html 테마 */
 .profile-section.buncheong-theme {
-    border-left: 5px solid #bcaaa4;
+    border-left: 5px solid hsl(0, 83%, 75%);
 }
 .profile-section.geumbak-theme {
     border-left: 5px solid #ffd54f; /* Gold for Geumbak */
@@ -96,15 +96,15 @@ h1 {
 
 /* 3.ShadowMilk&PureVanilla.html 테마 */
 .profile-section.mask-theme {
-    border-left: 5px solid #424242; /* Dark grey for mask theme */
+    border-left: 5px solid hsl(232, 100%, 71%); /* Dark grey for mask theme */
 }
 .profile-section.hanji-theme {
-    border-left: 5px solid #d7ccc8; /* Light brown/beige for hanji theme */
+    border-left: 5px solid hwb(57 71% 7%); /* Light brown/beige for hanji theme */
 }
 
 /* 4.EternalSugar&HollyBerry.html 테마 */
 .profile-section.jasu-theme {
-    border-left: 5px solid #8d6e63; /* Brown for Nakhwa theme */
+    border-left: 5px solid hsl(308, 49%, 85%); /* Brown for Nakhwa theme */
 }
 .profile-section.hwagak-theme {
     border-left: 5px solid #c2185b; /* Pink/Magenta for Oil painting theme */
@@ -112,7 +112,7 @@ h1 {
 
 /* 5.SilentSalt&WhiteLily.html 테마 */
 .profile-section.nakhwa-theme {
-    border-left: 5px solid #b3e5fc; /* Light blue for Sugar/Salt theme */
+    border-left: 5px solid hsl(260, 100%, 56%); /* Light blue for Sugar/Salt theme */
 }
 .profile-section.deung-theme {
     border-left: 5px solid #e8f5e9; /* Light green for Ceramics/Lily theme */
