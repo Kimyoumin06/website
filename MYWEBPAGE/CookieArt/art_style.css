@@ -1,0 +1,223 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Helvetica Neue', sans-serif;
+    background-color: #fff; /* 기본 흰색 배경 */
+    color: #000; /* 기본 검은색 텍스트 */
+}
+
+.header-video-container {
+    width: 100%;
+    height: 30vh; /* 뷰포트 높이의 30% */
+    overflow: hidden;
+    position: relative;
+}
+
+#headerVideo, .middle-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 컨테이너를 꽉 채우도록 설정 */
+    position: absolute;
+    top: 0;
+    left: 0;
+    filter: brightness(80%); /* 영상 밝기 조절 */
+    z-index: 1;
+}
+
+.video-text-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+    z-index: 2; /* 비디오 위에 텍스트를 표시하기 위한 z-index */
+}
+
+.video-text-overlay h2 {
+    font-size: 2.5em;
+    margin: 0;
+}
+
+h1 {
+    font-size: 2.5em;
+    text-align: center;
+    margin: 40px 0;
+}
+
+.text-content {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 0 20px;
+    line-height: 1.7;
+}
+
+.text-content h3 {
+    font-size: 1.8em;
+    color: #333;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.text-content p {
+    font-size: 1.1em;
+    color: #555;
+    text-align: left;
+}
+
+.profile-section {
+    max-width: 800px;
+    margin: 60px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+/* 1.Mystic&DarkCacao.html 테마 */
+.profile-section.mystic-theme, .profile-section.darkcacao-theme {
+    border-left: 5px solid #8d6e63;
+}
+
+/* 2.Burning&GoldenCheese.html 테마 */
+.profile-section.buncheong-theme {
+    border-left: 5px solid #bcaaa4;
+}
+.profile-section.geumbak-theme {
+    border-left: 5px solid #ffd54f; /* Gold for Geumbak */
+}
+
+/* 3.ShadowMilk&PureVanilla.html 테마 */
+.profile-section.mask-theme {
+    border-left: 5px solid #424242; /* Dark grey for mask theme */
+}
+.profile-section.hanji-theme {
+    border-left: 5px solid #d7ccc8; /* Light brown/beige for hanji theme */
+}
+
+/* 4.EternalSugar&HollyBerry.html 테마 */
+.profile-section.jasu-theme {
+    border-left: 5px solid #8d6e63; /* Brown for Nakhwa theme */
+}
+.profile-section.hwagak-theme {
+    border-left: 5px solid #c2185b; /* Pink/Magenta for Oil painting theme */
+}
+
+/* 5.SilentSalt&WhiteLily.html 테마 */
+.profile-section.nakhwa-theme {
+    border-left: 5px solid #b3e5fc; /* Light blue for Sugar/Salt theme */
+}
+.profile-section.deung-theme {
+    border-left: 5px solid #e8f5e9; /* Light green for Ceramics/Lily theme */
+}
+
+.profile-section .profile-image {
+    max-width: 150px;
+    height: auto;
+    border-radius: 8px;
+    flex-shrink: 0;
+}
+
+.profile-section .profile-text {
+    flex-grow: 1;
+}
+
+.profile-section h2 {
+    font-size: 2em;
+    margin-top: 0;
+    color: #5d4037;
+}
+
+.profile-section p {
+    font-size: 1.1em;
+    color: #4e4e4e;
+    line-height: 1.8;
+}
+
+.top-content {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 30px;
+    padding: 0 20px;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+}
+
+.single-image-container {
+    text-align: center;
+}
+
+.single-image {
+    max-width: 400px;
+    height: auto;
+    border-radius: 8px;
+}
+
+.middle-video-container {
+    margin: 40px 0;
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+    position: relative;
+}
+
+.namu-video-wrapper {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    overflow: hidden;
+    max-width: 640px;
+    width: 100%;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.namu-video-header {
+    background-color: #f8f9fa;
+    padding: 8px 12px;
+    font-weight: bold;
+    border-bottom: 1px solid #ccc;
+    color: #222;
+}
+
+.video-container {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    background-color: #000;
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.button-container {
+    text-align: center;
+    margin: 50px 0;
+}
+
+.nav-button {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: #333;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.nav-button:hover {
+    background-color: #555;
+}

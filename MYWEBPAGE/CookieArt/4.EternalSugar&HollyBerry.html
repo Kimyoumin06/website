@@ -3,272 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>낙화장 & 유화</title>
-    <style>
-        body, html {
-            margin: 0;
-            padding: 0;
-            font-family: 'Helvetica Neue', sans-serif;
-            background-color: #fff; /* 기본 흰색 배경 */
-            color: #000; /* 기본 검은색 텍스트 */
-        }
-
-        /* --- 메뉴 스타일 시작 --- */
-        .menu {
-            height: 100%;
-            width: 0;
-            position: fixed;
-            z-index: 100; /* 다른 요소들 위에 오도록 z-index 설정 */
-            top: 0;
-            right: 0; /* 오른쪽에서 나오도록 수정 */
-            background-color: #111;
-            overflow-x: hidden;
-            transition: 0.5s;
-            padding-top: 60px;
-        }
-
-        .menu a {
-            padding: 8px 8px 8px 32px;
-            text-decoration: none;
-            font-size: 25px;
-            color: #818181;
-            display: block;
-            transition: 0.3s;
-        }
-
-        .menu a:hover {
-            color: #f1f1f1;
-        }
-
-        .menu .closebtn {
-            position: absolute;
-            top: 0;
-            right: 25px;
-            font-size: 36px;
-            margin-left: 50px;
-        }
-
-        .hamburger-icon {
-            font-size: 30px;
-            cursor: pointer;
-            position: fixed; /* 화면에 고정 */
-            top: 20px;
-            right: 30px;
-            z-index: 99; /* 메뉴보다는 아래, 다른 콘텐츠보다는 위에 */
-            color: white; /* 헤더 영상 위에서 잘 보이도록 흰색으로 설정 */
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.5); /* 그림자 추가 */
-        }
-        /* --- 메뉴 스타일 끝 --- */
-
-        .header-video-container {
-            width: 100%;
-            height: 30vh; /* 뷰포트 높이의 30% */
-            overflow: hidden;
-            position: relative;
-        }
-
-        #headerVideo {
-            width: 100%;
-            height: 100%;
-            object-fit: cover; /* 컨테이너를 꽉 채우도록 설정 */
-            position: absolute;
-            top: 0;
-            left: 0;
-            filter: brightness(80%); /* 영상 밝기 조절 */
-            z-index: 1; /* 다른 콘텐츠 뒤로 보내기 (필요시) */
-        }
-
-        .video-text-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            text-align: center;
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
-            z-index: 2; /* 비디오 위에 텍스트를 표시하기 위한 z-index */
-        }
-
-        .video-text-overlay h2 {
-            font-size: 2.5em;
-            margin: 0;
-        }
-
-        h1 {
-            font-size: 2.5em;
-            text-align: center;
-            margin: 40px 0;
-        }
-
-        .text-content {
-            max-width: 800px;
-            margin: 40px auto;
-            padding: 0 20px;
-            line-height: 1.7;
-        }
-
-        .text-content h3 {
-            font-size: 1.8em;
-            color: #333;
-            border-bottom: 2px solid #eee;
-            padding-bottom: 10px;
-            margin-bottom: 20px;
-        }
-
-        .text-content p {
-            font-size: 1.1em;
-            color: #555;
-            text-align: left;
-        }
-
-        .profile-section {
-            max-width: 800px;
-            margin: 60px auto;
-            padding: 20px;
-            background-color: #f9f9f9;
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-
-        .profile-section.nakhwa-theme {
-            border-left: 5px solid #8d6e63; /* Brown for Nakhwa theme */
-        }
-
-        .profile-section.oil-theme {
-            border-left: 5px solid #c2185b; /* Pink/Magenta for Oil painting theme */
-        }
-
-        .profile-section .profile-image {
-            max-width: 150px;
-            height: auto;
-            border-radius: 8px;
-        }
-
-        .profile-section .profile-text {
-            flex-grow: 1;
-        }
-
-        .profile-section h2 {
-            font-size: 2em;
-            margin-top: 0;
-            color: #5d4037;
-        }
-
-        .profile-section p {
-            font-size: 1.1em;
-            color: #4e4e4e;
-            line-height: 1.8;
-        }
-
-        .top-content {
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            gap: 30px;
-            padding: 0 20px;
-            flex-wrap: wrap;
-            margin-bottom: 30px;
-        }
-
-        .single-image-container {
-            text-align: center;
-        }
-
-        .single-image {
-            max-width: 400px;
-            height: auto;
-            border-radius: 8px;
-        }
-
-        .middle-video-container {
-            margin: 40px 0;
-            width: 100%;
-            height: 400px;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .middle-video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            position: absolute;
-            top: 0;
-            left: 0;
-            filter: brightness(80%);
-        }
-
-        .namu-video-wrapper {
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            overflow: hidden;
-            max-width: 640px;
-            width: 100%;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-        }
-
-        .namu-video-header {
-            background-color: #f8f9fa;
-            padding: 8px 12px;
-            font-weight: bold;
-            border-bottom: 1px solid #ccc;
-            color: #222;
-        }
-
-        .video-container {
-            position: relative;
-            width: 100%;
-            padding-bottom: 56.25%;
-            height: 0;
-            overflow: hidden;
-            background-color: #000;
-        }
-
-        .video-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
-
-        .button-container {
-            text-align: center;
-            margin: 50px 0;
-        }
-
-        .nav-button {
-            display: inline-block;
-            padding: 12px 24px;
-            background-color: #333;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-        }
-
-        .nav-button:hover {
-            background-color: #555;
-        }
-    </style>
+    <title>자수장 & 화각장</title>
+    <link rel="stylesheet" href="art_style.css">
 </head>
 <body>
     <!-- 햄버거 아이콘 -->
-    <span class="hamburger-icon" onclick="openNav()">&#9776;</span>
-
-    <!-- 메뉴 콘텐츠 -->
-    <div id="myMenu" class="menu">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <a href="../MainPage.html">HOME</a>
-        <a href="Steck.html">작품 알아보기</a>
-        <a href="https://www.youtube.com/@CRKingdomKR" target="_blank">SNS</a>
-    </div>
-
     <div class="header-video-container">
         <video autoplay muted loop id="headerVideo">
             <!-- 낙화장 시연 영상 -->
@@ -278,7 +17,7 @@
             <h2>자수장 - 이터널슈가 쿠키</h2>
         </div>
     </div>
-    <h1>낙화장이란 무엇인가?</h1>
+    <h1>자수장이란 무엇인가?</h1>
 
     <div class="top-content">
         <div class="single-image-container">
@@ -287,23 +26,23 @@
         <div class="namu-video-wrapper">
             <div class="namu-video-header">공식 아트 콜라보 트레일러</div>
             <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/1_2_3_4_5" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/Ce3FtxuJztk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
             </div>
         </div>
     </div>
 
     <div class="text-content">
         <h3>정의</h3>
-        <p>낙화장(烙畵匠)은 불에 달군 인두로 나무, 종이, 가죽 등의 표면을 지져서 그림이나 문양을 그리는 전통 공예 기술 또는 그 기술을 가진 장인을 의미합니다. 먹을 사용하지 않고 오직 인두의 열과 압력, 시간 조절만으로 농담과 질감을 표현하는 독특한 예술 분야입니다.</p>
-        <h3>낙화장만의 매력</h3>
-        <p>낙화장의 매력은 불과 인두가 만들어내는 깊이와 고풍스러움에 있습니다. 섬세한 온도 조절을 통해 표현되는 자연스러운 농담 변화는 마치 한 폭의 수묵화를 보는 듯한 착각을 불러일으킵니다. 나무의 결 위로 새겨진 뜨거운 흔적은 시간이 지나도 변치 않는 강렬한 생명력을 지니며, 디지털 시대에 아날로그적 감성과 장인의 혼을 느끼게 하는 귀중한 예술입니다.</p>
+        <p>자수장(刺繡匠)은 옷감이나 헝겊에 여러 가지 색실로 그림, 글자, 무늬 등을 수놓는 전통 공예 기술 또는 그 기술을 가진 장인을 말합니다. 바늘과 실을 이용해 평면의 천 위에 입체감과 생동감을 불어넣는 섬세하고 화려한 예술입니다.</p>
+        <h3>자수장만의 매력</h3>
+        <p>자수장의 매력은 한 땀 한 땀 이어지는 정성과 다채로운 색실이 만들어내는 회화적인 아름다움에 있습니다. 실의 굵기, 꼬임, 색상을 자유자재로 활용하여 입체감과 질감을 표현하며, 완성된 자수는 부드러우면서도 강렬한 인상을 남깁니다. 왕실의 위엄을 상징하는 용보부터 소박한 생활용품에 이르기까지, 자수는 한국인의 삶과 미의식을 담아온 소중한 문화유산입니다.</p>
     </div>
 
-    <div class="profile-section nakhwa-theme">
-        <img src="https://www.cha.go.kr/unisearch/images/nio_ich/132.jpg" alt="김영조 장인" class="profile-image">
+    <div class="profile-section jasu-theme">
+        <img src="https://www.k-heritage.tv/images/brd/2024/05/29/1716964893931.png" alt="최정인 장인" class="profile-image">
         <div class="profile-text">
-            <h2>낙화장 김영조</h2>
-            <p>김영조 장인은 국가무형문화재 낙화장 보유자로, 40년 넘게 꺼져가던 낙화의 불씨를 되살리고 지켜온 장인입니다. 그는 전통적인 산수화, 인물화뿐만 아니라 현대적인 소재까지 아우르며 낙화 예술의 새로운 지평을 열었다는 평가를 받습니다. '쿠키런: 킹덤'과의 협업에서는 이터널슈가 쿠키의 신비롭고 영원한 이미지를 인두로 섬세하게 표현하여 낙화의 아름다움을 전 세계에 알렸습니다.</p>
+            <h2>자수장 최정인</h2>
+            <p>최정인 장인은 전통 자수의 맥을 현대적으로 계승하며 활발하게 활동하는 자수 공예가입니다. 그녀는 전통적인 도안과 기법을 깊이 연구하면서도, 현대적인 색감과 디자인을 과감하게 접목하여 자수 예술의 새로운 가능성을 탐구합니다. '쿠키런: 킹덤'과의 협업에서는 이터널슈가 쿠키의 화려하고 신성한 이미지를 다채로운 색실과 입체적인 수 기법으로 표현하여 자수가 지닌 무한한 표현력을 선보였습니다.</p>
         </div>
     </div>
 
@@ -317,7 +56,7 @@
         </div>
     </div>
 
-    <h1>유화란 무엇인가?</h1>
+    <h1>화각장이란 무엇인가?</h1>
 
     <div class="top-content">
         <div class="single-image-container">
@@ -326,23 +65,23 @@
         <div class="namu-video-wrapper">
             <div class="namu-video-header">공식 아트 콜라보 트레일러</div>
             <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/6_7_8_9_0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/0GY8r5mwyYs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
             </div>
         </div>
     </div>
 
     <div class="text-content">
         <h3>정의</h3>
-        <p>유화(油畫)는 안료를 식물성 기름(주로 아마인유)에 개어 만든 물감을 사용하여 그리는 회화 기법입니다. 캔버스, 나무 패널 등 다양한 표면에 그릴 수 있으며, 서양 회화의 가장 대표적인 장르 중 하나로 수 세기 동안 수많은 명작을 탄생시켰습니다.</p>
-        <h3>유화만의 매력</h3>
-        <p>유화의 가장 큰 매력은 깊이 있는 색감과 풍부한 질감 표현에 있습니다. 물감이 마르는 속도가 느려 색을 섞거나 겹쳐 칠하며 부드러운 색의 전환과 미묘한 변화를 만들어낼 수 있습니다. 또한, 물감을 두껍게 칠하는 임파스토 기법 등을 통해 입체적인 효과를 줄 수 있으며, 완성된 후에는 특유의 광택과 함께 뛰어난 보존성을 자랑합니다. 이러한 특성은 작가의 개성과 감정을 가장 강렬하고 자유롭게 표현할 수 있게 해줍니다.</p>
+        <p>화각장(華角匠)은 투명한 쇠뿔을 얇게 갈아 종이처럼 만든 판(화각) 뒷면에 다채로운 그림을 그리고, 이를 목가구나 기물 표면에 붙여 장식하는 한국의 전통 공예 기술입니다. 나전칠기와 함께 가장 화려하고 정교한 공예 중 하나로 손꼽힙니다.</p>
+        <h3>화각장만의 매력</h3>
+        <p>화각장의 매력은 뿔의 투명한 막을 통해 은은하게 비치는 그림의 독특한 색감과 깊이에 있습니다. 뒷면에 그림을 그리기 때문에 색이 쉽게 바래거나 손상되지 않으며, 시간이 지나도 고유의 아름다움을 유지합니다. 십장생, 산수, 화조 등 한국적인 소재를 화려하면서도 단아하게 표현하여 왕실 공예의 품격을 보여주는 것이 특징입니다.</p>
     </div>
 
-    <div class="profile-section oil-theme">
-        <img src="https://i.ytimg.com/vi/example/hqdefault.jpg" alt="유화 작가" class="profile-image">
+    <div class="profile-section hwagak-theme">
+        <img src="https://www.heritage.go.kr/unisearch/images/nio_ich/109.jpg" alt="이재만 장인" class="profile-image">
         <div class="profile-text">
-            <h2>유화 작가 심규하</h2>
-            <p>심규하 작가는 강렬한 색채와 역동적인 붓 터치로 자신만의 독창적인 작품 세계를 구축하고 있는 현대 유화 작가입니다. 그는 인물과 풍경 등 다양한 대상을 자신만의 시각으로 재해석하여 캔버스에 담아냅니다. '쿠키런: 킹덤'과의 협업에서는 홀리베리 쿠키의 용맹하고 호탕한 성격을 두터운 질감과 강렬한 색채 대비를 통해 표현하며, 유화가 가진 표현의 힘을 유감없이 보여주었습니다.</p>
+            <h2>화각장 이재만</h2>
+            <p>이재만 장인은 국가무형문화재 화각장 보유자로, 대를 이어 화각 공예의 명맥을 잇고 있는 장인입니다. 그는 전통적인 방식을 고수하며 쇠뿔을 다루는 것부터 그림을 그리고 붙이는 모든 과정을 수작업으로 진행합니다. 그의 손에서 재탄생한 화각 작품들은 전통의 아름다움을 넘어 현대적인 감각까지 더해져 화각 공예의 새로운 가능성을 보여주고 있습니다.</p>
         </div>
     </div>
 
@@ -350,16 +89,5 @@
         <a href="Steck.html" class="nav-button">목록으로 돌아가기</a>
     </div>
 
-    <script>
-        /* 메뉴를 여는 함수 */
-        function openNav() {
-            document.getElementById("myMenu").style.width = "250px";
-        }
-
-        /* 메뉴를 닫는 함수 */
-        function closeNav() {
-            document.getElementById("myMenu").style.width = "0";
-        }
-    </script>
 </body>
 </html>

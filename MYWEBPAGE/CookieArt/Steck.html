@@ -12,53 +12,6 @@
             background-color: #fff;
         }
 
-        /* --- 메뉴 스타일 시작 --- */
-        .menu {
-            height: 100%;
-            width: 0;
-            position: fixed;
-            z-index: 100; /* 다른 요소들 위에 오도록 z-index 설정 */
-            top: 0;
-            right: 0; /* 오른쪽에서 나오도록 수정 */
-            background-color: #111;
-            overflow-x: hidden;
-            transition: 0.5s;
-            padding-top: 60px;
-        }
-
-        .menu a {
-            padding: 8px 8px 8px 32px;
-            text-decoration: none;
-            font-size: 25px;
-            color: #818181;
-            display: block;
-            transition: 0.3s;
-        }
-
-        .menu a:hover {
-            color: #f1f1f1;
-        }
-
-        .menu .closebtn {
-            position: absolute;
-            top: 0;
-            right: 25px;
-            font-size: 36px;
-            margin-left: 50px;
-        }
-
-        .hamburger-icon {
-            font-size: 30px;
-            cursor: pointer;
-            position: fixed; /* 화면에 고정 */
-            top: 20px;
-            right: 30px;
-            z-index: 99; /* 메뉴보다는 아래, 다른 콘텐츠보다는 위에 */
-            color: white; /* 헤더 영상 위에서 잘 보이도록 흰색으로 설정 */
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.5); /* 그림자 추가 */
-        }
-        /* --- 메뉴 스타일 끝 --- */
-
         .header-video-container {
             width: 100%;
             height: 30vh;
@@ -184,16 +137,6 @@
 </head>
 <body>
     <!-- 햄버거 아이콘 -->
-    <span class="hamburger-icon" onclick="openNav()">&#9776;</span>
-
-    <!-- 메뉴 콘텐츠 -->
-    <div id="myMenu" class="menu">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <a href="../MainPage.html">HOME</a>
-        <a href="Steck.html">작품 알아보기</a>
-        <a href="https://www.youtube.com/@CRKingdomKR" target="_blank">SNS</a>
-    </div>
-
     <div class="header-video-container">
         <video autoplay muted loop id="headerVideo">
             <!-- 영상 파일 경로는 실제 위치에 맞게 수정해주세요 -->
@@ -236,8 +179,8 @@
                     <img src="PureVanilla.png" alt="Pure Vanilla Cookie" class="cookie-image pure-vanilla-img">
                 </div>
                 <div class="text-content">
-                    <span>전통 탈 & 화각장</span>
-                    <p>익살스러운 가면과 천 년의 종이</p>
+                    <span>전통 탈 & 한지공예</span>
+                    <p>익살스러운 가면과 천년의 종이</p>
                 </div>
             </div>
         </a>
@@ -248,7 +191,7 @@
                     <img src="HollyBerry.png" alt="Holly Berry Cookie" class="cookie-image holly-berry-img">
                 </div>
                 <div class="text-content">
-                    <span>낙화장 & 유화</span>
+                    <span>자수장 & 화각장</span>
                     <p>뜨거운 인두와 강렬한 붓 터치의 만남</p>
                 </div>
             </div>
@@ -256,27 +199,16 @@
         <a href="5.SilentSalt&WhiteLily.html">
             <div class="link-container">
                 <div class="image-wrapper">
-                    <img src="SilentSolt.png" alt="SilentSalt Cookie" class="cookie-image">
+                    <img src="SilentSalt.png" alt="SilentSalt Cookie" class="cookie-image">
                     <img src="WhiteLily.png" alt="WhiteLily Cookie" class="cookie-image white-lily-img">
                 </div>
                 <div class="text-content">
-                    <span>설탕공예 & 도예</span>
-                    <p>소금 결정과 순백의 꽃잎</p>
+                    <span>낙화장 & 전통등</span>
+                    <p>부드러운 모래 위로 빛나는 빛</p>
                 </div>
             </div>
         </a>
     </div>
 
-    <script>
-        /* 메뉴를 여는 함수 */
-        function openNav() {
-            document.getElementById("myMenu").style.width = "250px";
-        }
-
-        /* 메뉴를 닫는 함수 */
-        function closeNav() {
-            document.getElementById("myMenu").style.width = "0";
-        }
-    </script>
 </body>
 </html>

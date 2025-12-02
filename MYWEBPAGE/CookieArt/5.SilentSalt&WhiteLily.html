@@ -3,282 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>설탕공예 & 도예</title>
-    <style>
-        body, html {
-            margin: 0;
-            padding: 0;
-            font-family: 'Helvetica Neue', sans-serif;
-            background-color: #fff; /* 기본 흰색 배경 */
-            color: #000; /* 기본 검은색 텍스트 */
-        }
-
-        /* --- 메뉴 스타일 시작 --- */
-        .menu {
-            height: 100%;
-            width: 0;
-            position: fixed;
-            z-index: 100; /* 다른 요소들 위에 오도록 z-index 설정 */
-            top: 0;
-            right: 0; /* 오른쪽에서 나오도록 수정 */
-            background-color: #111;
-            overflow-x: hidden;
-            transition: 0.5s;
-            padding-top: 60px;
-        }
-
-        .menu a {
-            padding: 8px 8px 8px 32px;
-            text-decoration: none;
-            font-size: 25px;
-            color: #818181;
-            display: block;
-            transition: 0.3s;
-        }
-
-        .menu a:hover {
-            color: #f1f1f1;
-        }
-
-        .menu .closebtn {
-            position: absolute;
-            top: 0;
-            right: 25px;
-            font-size: 36px;
-            margin-left: 50px;
-        }
-
-        .hamburger-icon {
-            font-size: 30px;
-            cursor: pointer;
-            position: fixed; /* 화면에 고정 */
-            top: 20px;
-            right: 30px;
-            z-index: 99; /* 메뉴보다는 아래, 다른 콘텐츠보다는 위에 */
-            color: white; /* 헤더 영상 위에서 잘 보이도록 흰색으로 설정 */
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.5); /* 그림자 추가 */
-        }
-        /* --- 메뉴 스타일 끝 --- */
-
-        .header-video-container {
-            width: 100%;
-            height: 30vh; /* 뷰포트 높이의 30% */
-            overflow: hidden;
-            position: relative;
-        }
-
-        #headerVideo {
-            width: 100%;
-            height: 100%;
-            object-fit: cover; /* 컨테이너를 꽉 채우도록 설정 */
-            position: absolute;
-            top: 0;
-            left: 0;
-            filter: brightness(80%); /* 영상 밝기 조절 */
-            z-index: 1; /* 다른 콘텐츠 뒤로 보내기 (필요시) */
-        }
-
-        .video-text-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            text-align: center;
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
-            z-index: 2; /* 비디오 위에 텍스트를 표시하기 위한 z-index */
-        }
-
-        .video-text-overlay h2 {
-            font-size: 2.5em;
-            margin: 0;
-        }
-
-        h1 {
-            font-size: 2.5em;
-            text-align: center;
-            margin: 40px 0;
-        }
-
-        .text-content {
-            max-width: 800px;
-            margin: 40px auto;
-            padding: 0 20px;
-            line-height: 1.7;
-        }
-
-        .text-content h3 {
-            font-size: 1.8em;
-            color: #333;
-            border-bottom: 2px solid #eee;
-            padding-bottom: 10px;
-            margin-bottom: 20px;
-        }
-
-        .text-content p {
-            font-size: 1.1em;
-            color: #555;
-            text-align: left;
-        }
-
-        .profile-section {
-            max-width: 800px;
-            margin: 60px auto;
-            padding: 20px;
-            background-color: #f9f9f9;
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-
-        .profile-section.sugar-theme {
-            border-left: 5px solid #b3e5fc; /* Light blue for Sugar/Salt theme */
-        }
-
-        .profile-section.ceramics-theme {
-            border-left: 5px solid #e8f5e9; /* Light green for Ceramics/Lily theme */
-        }
-
-        .profile-section .profile-image {
-            max-width: 150px;
-            height: auto;
-            border-radius: 8px;
-        }
-
-        .profile-section .profile-text {
-            flex-grow: 1;
-        }
-
-        .profile-section h2 {
-            font-size: 2em;
-            margin-top: 0;
-            color: #5d4037;
-        }
-
-        .profile-section p {
-            font-size: 1.1em;
-            color: #4e4e4e;
-            line-height: 1.8;
-        }
-
-        .top-content {
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            gap: 30px;
-            padding: 0 20px;
-            flex-wrap: wrap;
-            margin-bottom: 30px;
-        }
-
-        .single-image-container {
-            text-align: center;
-        }
-
-        .single-image {
-            max-width: 400px;
-            height: auto;
-            border-radius: 8px;
-        }
-
-        .middle-video-container {
-            margin: 40px 0;
-            width: 100%;
-            height: 400px;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .middle-video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            position: absolute;
-            top: 0;
-            left: 0;
-            filter: brightness(80%);
-        }
-
-        .namu-video-wrapper {
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            overflow: hidden;
-            max-width: 640px;
-            width: 100%;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-        }
-
-        .namu-video-header {
-            background-color: #f8f9fa;
-            padding: 8px 12px;
-            font-weight: bold;
-            border-bottom: 1px solid #ccc;
-            color: #222;
-        }
-
-        .video-container {
-            position: relative;
-            width: 100%;
-            padding-bottom: 56.25%;
-            height: 0;
-            overflow: hidden;
-            background-color: #000;
-        }
-
-        .video-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
-
-        .button-container {
-            text-align: center;
-            margin: 50px 0;
-        }
-
-        .nav-button {
-            display: inline-block;
-            padding: 12px 24px;
-            background-color: #333;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-        }
-
-        .nav-button:hover {
-            background-color: #555;
-        }
-    </style>
+    <title>낙화장 & 전통등</title>
+    <link rel="stylesheet" href="art_style.css">
 </head>
 <body>
     <!-- 햄버거 아이콘 -->
-    <span class="hamburger-icon" onclick="openNav()">&#9776;</span>
-
-    <!-- 메뉴 콘텐츠 -->
-    <div id="myMenu" class="menu">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <a href="../MainPage.html">HOME</a>
-        <a href="Steck.html">작품 알아보기</a>
-        <a href="https://www.youtube.com/@CRKingdomKR" target="_blank">SNS</a>
-    </div>
-
     <div class="header-video-container">
         <video autoplay muted loop id="headerVideo">
             <!-- 설탕공예 시연 영상 -->
             <source src="../video/낙화장.mp4" type="video/mp4">
         </video>
         <div class="video-text-overlay">
-            <h2>설탕공예 - 사일런트 솔트 쿠키</h2>
+            <h2>낙화장 - 사일런트 솔트 쿠키</h2>
         </div>
     </div>
-    <h1>설탕공예란 무엇인가?</h1>
+    <h1>낙화장이란 무엇인가?</h1>
 
     <div class="top-content">
         <div class="single-image-container">
@@ -287,23 +26,23 @@
         <div class="namu-video-wrapper">
             <div class="namu-video-header">공식 아트 콜라보 트레일러</div>
             <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/1_2_3_4_5" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/45WwRLX9SG8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
             </div>
         </div>
     </div>
 
     <div class="text-content">
         <h3>정의</h3>
-        <p>설탕공예(Sugar Craft)는 설탕을 주재료로 하여 열을 가해 녹이거나 반죽하여 다양한 형태의 조형물을 만드는 예술입니다. 설탕의 물리적 특성을 이용하여 꽃, 동물, 건축물 등 섬세하고 화려한 작품을 만들며, 주로 케이크 장식이나 전시용 예술품으로 활용됩니다.</p>
-        <h3>설탕공예만의 매력</h3>
-        <p>설탕공예의 매력은 마치 유리나 보석처럼 투명하고 반짝이는 질감에 있습니다. 빛을 통과시키며 만들어내는 영롱한 색감과 섬세한 표현은 설탕이라는 재료의 한계를 뛰어넘는 예술적 경지를 보여줍니다. 먹을 수 있는 재료로 만들어졌다는 점 또한 특별하며, 달콤함과 아름다움을 동시에 선사하는 환상적인 예술 분야입니다.</p>
+        <p>낙화장(烙畵匠)은 불에 달군 인두로 나무, 종이, 가죽 등의 표면을 지져서 그림이나 문양을 그리는 전통 공예 기술 또는 그 기술을 가진 장인을 의미합니다. 먹을 사용하지 않고 오직 인두의 열과 압력, 시간 조절만으로 농담과 질감을 표현하는 독특한 예술 분야입니다.</p>
+        <h3>낙화장만의 매력</h3>
+        <p>낙화장의 매력은 불과 인두가 만들어내는 깊이와 고풍스러움에 있습니다. 섬세한 온도 조절을 통해 표현되는 자연스러운 농담 변화는 마치 한 폭의 수묵화를 보는 듯한 착각을 불러일으킵니다. 나무의 결 위로 새겨진 뜨거운 흔적은 시간이 지나도 변치 않는 강렬한 생명력을 지니며, 디지털 시대에 아날로그적 감성과 장인의 혼을 느끼게 하는 귀중한 예술입니다.</p>
     </div>
 
-    <div class="profile-section sugar-theme">
-        <img src="https://i.ytimg.com/vi/example/hqdefault.jpg" alt="김민선 작가" class="profile-image">
+    <div class="profile-section nakhwa-theme">
+        <img src="https://www.cha.go.kr/unisearch/images/nio_ich/132.jpg" alt="김영조 장인" class="profile-image">
         <div class="profile-text">
-            <h2>설탕공예가 김민선</h2>
-            <p>김민선 작가는 대한민국 설탕공예 명인으로, 설탕을 이용해 환상적인 예술 작품을 만들어내는 것으로 유명합니다. 그녀의 손에서 설탕은 섬세한 꽃잎으로, 화려한 보석으로 재탄생하며 보는 이들의 감탄을 자아냅니다. '쿠키런: 킹덤'과의 협업에서는 사일런트 솔트 쿠키의 결정화된 소금과 눈물의 이미지를 투명하고 반짝이는 설탕공예로 완벽하게 구현해냈습니다.</p>
+            <h2>낙화장 김영조</h2>
+            <p>김영조 장인은 국가무형문화재 낙화장 보유자로, 40년 넘게 꺼져가던 낙화의 불씨를 되살리고 지켜온 장인입니다. 그는 전통적인 산수화, 인물화뿐만 아니라 현대적인 소재까지 아우르며 낙화 예술의 새로운 지평을 열었다는 평가를 받습니다. '쿠키런: 킹덤'과의 협업에서는 사일런트 솔트 쿠키의 결정화된 소금과 눈물의 이미지를 인두로 섬세하게 표현하여 낙화의 아름다움을 전 세계에 알렸습니다.</p>
         </div>
     </div>
 
@@ -317,7 +56,7 @@
         </div>
     </div>
 
-    <h1>도예란 무엇인가?</h1>
+    <h1>전통등이란 무엇인가?</h1>
 
     <div class="top-content">
         <div class="single-image-container">
@@ -326,23 +65,23 @@
         <div class="namu-video-wrapper">
             <div class="namu-video-header">공식 아트 콜라보 트레일러</div>
             <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/6_7_8_9_0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/kvbwIZAC8_Q" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
             </div>
         </div>
     </div>
 
     <div class="text-content">
         <h3>정의</h3>
-        <p>도예(陶藝)는 흙을 주재료로 하여 형태를 만들고, 유약을 바른 뒤 높은 온도에서 구워내어 그릇이나 조형물을 만드는 예술입니다. 인류의 역사와 함께해 온 가장 오래된 예술 형식 중 하나로, 실용적인 생활 도구에서부터 순수한 예술 작품까지 폭넓은 영역을 아우릅니다.</p>
-        <h3>도예만의 매력</h3>
-        <p>도예의 매력은 흙이라는 자연의 재료가 장인의 손길과 불의 뜨거움을 거쳐 완전히 새로운 모습으로 태어나는 '변화'에 있습니다. 부드러운 흙이 단단한 도자기로 변하는 과정은 예측 불가능한 결과를 낳기도 하며, 이는 세상에 단 하나뿐인 작품을 만들어냅니다. 소박하고 자연스러운 흙의 질감과 유약이 만들어내는 다채로운 색과 광택은 꾸밈없는 아름다움을 선사합니다.</p>
+        <p>전통등(傳統燈)은 대나무나 나무로 뼈대를 만들고 그 위에 한지나 비단 같은 천을 붙여 만드는 한국의 전통 조명 공예입니다. 단순한 조명 기구를 넘어, 복을 기원하고 어둠을 밝히는 상징적인 의미를 담고 있으며, 연등회와 같은 축제에서 중요한 역할을 합니다.</p>
+        <h3>전통등만의 매력</h3>
+        <p>전통등의 매력은 한지를 통해 은은하게 퍼져 나오는 부드럽고 따뜻한 불빛에 있습니다. 다양한 색상의 한지와 정교한 뼈대 구조가 어우러져 만들어내는 형태미는 그 자체로 하나의 예술 작품이 됩니다. 연꽃, 동물, 건물 등 다채로운 형태로 제작되어 한국인의 소망과 미의식을 담아내며, 밤을 아름답게 수놓는 빛의 예술이라 할 수 있습니다.</p>
     </div>
 
-    <div class="profile-section ceramics-theme">
-        <img src="https://i.ytimg.com/vi/example/hqdefault.jpg" alt="이혜미 작가" class="profile-image">
+    <div class="profile-section deung-theme">
+        <img src="https://www.idaegu.co.kr/news/photo/202405/437433_341938_3821.jpg" alt="전영일 장인" class="profile-image">
         <div class="profile-text">
-            <h2>도예가 이혜미</h2>
-            <p>이혜미 작가는 흙 본연의 특성을 살리면서도 현대적인 조형미를 더한 작품으로 주목받는 도예가입니다. 그녀는 전통적인 기법에만 머무르지 않고, 흙의 질감과 형태에 대한 끊임없는 탐구를 통해 자신만의 독창적인 도예 세계를 구축하고 있습니다. '쿠키런: 킹덤'과의 협업에서는 백합맛 쿠키의 순수하고 비극적인 서사를 흙으로 빚어낸 백합과 깨진 조각들로 표현하며 도예의 깊은 표현력을 보여주었습니다.</p>
+            <h2>전통등 명장 전영일</h2>
+            <p>전영일 명장은 40여 년간 전통등 제작에 헌신해 온 장인으로, 전통 방식과 현대적 디자인을 결합하여 전통등 예술의 지평을 넓혔다는 평가를 받습니다. 그는 단순한 재현을 넘어, 등(燈)에 이야기를 담고 움직임을 더하는 등 새로운 시도를 멈추지 않습니다. '쿠키런: 킹덤'과의 협업에서는 백합맛 쿠키의 순수하고 신비로운 이미지를 한지의 부드러운 빛과 정교한 구조의 전통등으로 표현하여, 보는 이들에게 따뜻한 감동을 선사했습니다.</p>
         </div>
     </div>
 
@@ -350,16 +89,5 @@
         <a href="Steck.html" class="nav-button">목록으로 돌아가기</a>
     </div>
 
-    <script>
-        /* 메뉴를 여는 함수 */
-        function openNav() {
-            document.getElementById("myMenu").style.width = "250px";
-        }
-
-        /* 메뉴를 닫는 함수 */
-        function closeNav() {
-            document.getElementById("myMenu").style.width = "0";
-        }
-    </script>
 </body>
 </html>

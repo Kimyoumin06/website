@@ -3,281 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>전통 탈 & 화각장</title>
-    <style>
-        body, html {
-            margin: 0;
-            padding: 0;
-            font-family: 'Helvetica Neue', sans-serif;
-            background-color: #fff; /* 기본 흰색 배경 */
-            color: #000; /* 기본 검은색 텍스트 */
-        }
-
-        /* --- 메뉴 스타일 시작 --- */
-        .menu {
-            height: 100%;
-            width: 0;
-            position: fixed;
-            z-index: 100; /* 다른 요소들 위에 오도록 z-index 설정 */
-            top: 0;
-            right: 0; /* 오른쪽에서 나오도록 수정 */
-            background-color: #111;
-            overflow-x: hidden;
-            transition: 0.5s;
-            padding-top: 60px;
-        }
-
-        .menu a {
-            padding: 8px 8px 8px 32px;
-            text-decoration: none;
-            font-size: 25px;
-            color: #818181;
-            display: block;
-            transition: 0.3s;
-        }
-
-        .menu a:hover {
-            color: #f1f1f1;
-        }
-
-        .menu .closebtn {
-            position: absolute;
-            top: 0;
-            right: 25px;
-            font-size: 36px;
-            margin-left: 50px;
-        }
-
-        .hamburger-icon {
-            font-size: 30px;
-            cursor: pointer;
-            position: fixed; /* 화면에 고정 */
-            top: 20px;
-            right: 30px;
-            z-index: 99; /* 메뉴보다는 아래, 다른 콘텐츠보다는 위에 */
-            color: white; /* 헤더 영상 위에서 잘 보이도록 흰색으로 설정 */
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.5); /* 그림자 추가 */
-        }
-        /* --- 메뉴 스타일 끝 --- */
-
-        .header-video-container {
-            width: 100%;
-            height: 30vh; /* 뷰포트 높이의 30% */
-            overflow: hidden;
-            position: relative;
-        }
-
-        #headerVideo {
-            width: 100%;
-            height: 100%;
-            object-fit: cover; /* 컨테이너를 꽉 채우도록 설정 */
-            position: absolute;
-            top: 0;
-            left: 0;
-            filter: brightness(80%); /* 영상 밝기 조절 */
-            z-index: 1; /* 다른 콘텐츠 뒤로 보내기 (필요시) */
-        }
-
-        .video-text-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            text-align: center;
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
-            z-index: 2; /* 비디오 위에 텍스트를 표시하기 위한 z-index */
-        }
-
-        .video-text-overlay h2 {
-            font-size: 2.5em;
-            margin: 0;
-        }
-
-        h1 {
-            font-size: 2.5em;
-            text-align: center;
-            margin: 40px 0;
-        }
-
-        .text-content {
-            max-width: 800px;
-            margin: 40px auto;
-            padding: 0 20px;
-            line-height: 1.7;
-        }
-
-        .text-content h3 {
-            font-size: 1.8em;
-            color: #333;
-            border-bottom: 2px solid #eee;
-            padding-bottom: 10px;
-            margin-bottom: 20px;
-        }
-
-        .text-content p {
-            font-size: 1.1em;
-            color: #555;
-            text-align: left;
-        }
-
-        .profile-section {
-            max-width: 800px;
-            margin: 60px auto;
-            padding: 20px;
-            background-color: #f9f9f9;
-            display: flex; /* Flexbox for image and text */
-            align-items: center; /* Vertically align items */
-            gap: 20px; /* Space between image and text */
-        }
-
-        .profile-section.mask-theme {
-            border-left: 5px solid #424242; /* Dark grey for mask theme */
-        }
-
-        .profile-section.hanji-theme {
-            border-left: 5px solid #d7ccc8; /* Light brown/beige for hanji theme */
-        }
-
-        .profile-section .profile-image {
-            max-width: 150px; /* Adjust image size as needed */
-            height: auto;
-            border-radius: 8px;
-        }
-
-        .profile-section .profile-text {
-            flex-grow: 1; /* Allow text to take remaining space */
-        }
-
-        .profile-section h2 {
-            font-size: 2em;
-            margin-top: 0;
-            color: #5d4037; /* Consistent color for profile titles */
-        }
-
-        .profile-section p {
-            font-size: 1.1em;
-            color: #4e4e4e;
-            line-height: 1.8;
-        }
-
-        .top-content {
-            display: flex;
-            justify-content: center;
-            align-items: flex-start; /* 상단 정렬 */
-            gap: 30px;
-            padding: 0 20px;
-            flex-wrap: wrap; /* 화면이 작아지면 아래로 배치 */
-            margin-bottom: 30px;
-        }
-
-        .single-image-container {
-            text-align: center;
-        }
-
-        .single-image {
-            max-width: 400px; /* 이미지 최대 너비 고정 */
-            height: auto;
-            border-radius: 8px;
-        }
-
-        .middle-video-container {
-            margin: 40px 0; /* 좌우 여백 제거 */
-            width: 100%; /* 너비를 화면 전체로 설정 */
-            height: 400px; /* 영상의 높이를 고정 */
-            overflow: hidden; /* 컨테이너를 벗어나는 부분 숨기기 */
-            position: relative; /* 자식 요소의 위치 기준으로 설정 */
-        }
-
-        .middle-video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover; /* 컨테이너를 꽉 채우면서 비율 유지 (잘림 발생) */
-            position: absolute;
-            top: 0;
-            left: 0;
-            filter: brightness(80%); /* 영상 밝기 조절 */
-        }
-
-        /* 나무위키 스타일 영상 래퍼 */
-        .namu-video-wrapper {
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            overflow: hidden;
-            max-width: 640px;
-            width: 100%;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-        }
-
-        .namu-video-header {
-            background-color: #f8f9fa;
-            padding: 8px 12px;
-            font-weight: bold;
-            border-bottom: 1px solid #ccc;
-            color: #222;
-        }
-
-        /* 반응형 유튜브 영상 컨테이너 */
-        .video-container {
-            position: relative;
-            width: 100%;
-            padding-bottom: 56.25%; /* 16:9 비율 */
-            height: 0;
-            overflow: hidden;
-            background-color: #000; /* 영상 로딩 중 검은 배경 */
-        }
-
-        .video-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
-
-        .button-container {
-            text-align: center;
-            margin: 50px 0;
-        }
-
-        .nav-button {
-            display: inline-block;
-            padding: 12px 24px;
-            background-color: #333;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-        }
-
-        .nav-button:hover {
-            background-color: #555;
-        }
-    </style>
+    <title>전통 탈 & 한지공예</title>
+    <link rel="stylesheet" href="art_style.css">
 </head>
 <body>
     <!-- 햄버거 아이콘 -->
-    <span class="hamburger-icon" onclick="openNav()">&#9776;</span>
-
-    <!-- 메뉴 콘텐츠 -->
-    <div id="myMenu" class="menu">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <a href="../MainPage.html">HOME</a>
-        <a href="Steck.html">작품 알아보기</a>
-        <a href="https://www.youtube.com/@CRKingdomKR" target="_blank">SNS</a>
-    </div>
-
     <div class="header-video-container">
         <video autoplay muted loop id="headerVideo">
-            <!-- 쉐도우밀크 쿠키 탈춤 영상 -->
-            <source src="../video/전통탈.mp4" type="video/mp4">
+            <!-- 쿠키런 킹덤 4주년 축하 공연 (쉐도우밀크 쿠키 탈춤) -->
+            <source src="../video/전통탈.mp4" type="video/mp4"> <!-- Placeholder, actual video should be linked or local -->
         </video>
         <div class="video-text-overlay">
-            <h2>전통 탈 - 섀도우밀크 쿠키</h2>
+            <h2>전통 탈 - 쉐도우밀크 쿠키</h2>
         </div>
     </div>
     <h1>전통 탈이란 무엇인가?</h1>
@@ -289,7 +26,7 @@
         <div class="namu-video-wrapper">
             <div class="namu-video-header">공식 아트 콜라보 트레일러</div>
             <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/9Z14p3m1yvI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/x1aicvhe8fE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
             </div>
         </div>
     </div>
@@ -311,7 +48,7 @@
 
     <div class="middle-video-container">
         <video autoplay muted loop class="middle-video">
-            <!-- 화각장 제작 과정 영상 -->
+            <!-- 한지 제작 과정 영상 -->
             <source src="../video/한지공예.mp4" type="video/mp4">
         </video>
         <div class="video-text-overlay">
@@ -319,7 +56,7 @@
         </div>
     </div>
 
-    <h1>화각장이란 무엇인가?</h1>
+    <h1>한지공예란 무엇인가?</h1>
 
     <div class="top-content">
         <div class="single-image-container">
@@ -328,40 +65,30 @@
         <div class="namu-video-wrapper">
             <div class="namu-video-header">공식 아트 콜라보 트레일러</div>
             <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/9Z14p3m1yvI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/AG3e3mW1xtU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
             </div>
         </div>
     </div>
 
     <div class="text-content">
         <h3>정의</h3>
-        <p>화각장(華角匠)은 투명한 쇠뿔을 얇게 갈아 종이처럼 만든 판(화각) 뒷면에 다채로운 그림을 그리고, 이를 목가구나 기물 표면에 붙여 장식하는 한국의 전통 공예 기술입니다. 나전칠기와 함께 가장 화려하고 정교한 공예 중 하나로 손꼽힙니다.</p>
-        <h3>화각장만의 매력</h3>
-        <p>화각장의 매력은 뿔의 투명한 막을 통해 은은하게 비치는 그림의 독특한 색감과 깊이에 있습니다. 뒷면에 그림을 그리기 때문에 색이 쉽게 바래거나 손상되지 않으며, 시간이 지나도 고유의 아름다움을 유지합니다. 십장생, 산수, 화조 등 한국적인 소재를 화려하면서도 단아하게 표현하여 왕실 공예의 품격을 보여주는 것이 특징입니다.</p>
+        <p>한지공예는 닥나무 껍질로 만든 한국의 전통 종이인 한지를 이용하여 다양한 생활용품이나 예술품을 만드는 공예 기법입니다. 한지는 천 년을 간다는 말처럼 뛰어난 내구성과 보존성을 자랑하며, 통기성과 보온성이 우수하여 예로부터 다양한 용도로 활용되어 왔습니다.</p>
+        <h3>한지공예만의 매력</h3>
+        <p>한지공예의 매력은 자연스러운 질감과 은은한 색감, 그리고 견고함에 있습니다. 닥나무 섬유의 특성상 질기고 부드러워 다양한 형태로 가공이 가능하며, 빛을 투과하는 특성을 활용하여 아름다운 조명이나 창호 등을 만들 수 있습니다. 장인의 섬세한 손길로 겹겹이 쌓아 올린 한지는 단순한 종이를 넘어 하나의 예술 작품으로 승화되며, 한국적인 미와 실용성을 동시에 담아냅니다.</p>
     </div>
 
     <div class="profile-section hanji-theme">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Hanji_craft_master_Kang_Soon-ok.jpg/800px-Hanji_craft_master_Kang_Soon-ok.jpg" alt="한지공예 장인" class="profile-image">
+        <img src="https://www.gokseong.go.kr/images/tour/sub_02/03_02_02_img01.jpg" alt="박명옥 장인" class="profile-image">
         <div class="profile-text">
-            <h2>화각장 이재만</h2>
-            <p>이재만 장인은 국가무형문화재 화각장 보유자로, 대를 이어 화각 공예의 명맥을 잇고 있는 장인입니다. 그는 전통적인 방식을 고수하며 쇠뿔을 다루는 것부터 그림을 그리고 붙이는 모든 과정을 수작업으로 진행합니다. 그의 손에서 재탄생한 화각 작품들은 전통의 아름다움을 넘어 현대적인 감각까지 더해져 화각 공예의 새로운 가능성을 보여주고 있습니다.</p>
+            <h2>한지공예가 박명옥</h2>
+            <p>박명옥 장인은 전라남도 곡성에서 30년 넘게 전통 한지공예의 맥을 이어오고 있는 장인입니다. 그녀는 닥나무를 직접 재배하고 전통 방식 그대로 한지를 제작하며, 이를 이용해 아름다운 한지 공예품을 만듭니다. 그녀의 작품은 한지의 순수한 멋과 실용성을 동시에 담아내고 있으며, '쿠키런: 킹덤'과의 협업에서는 퓨어바닐라 쿠키의 순수하고 자애로운 이미지를 한지를 통해 따뜻하고 부드럽게 표현했습니다.</p>
         </div>
     </div>
+
 
     <div class="button-container">
         <a href="Steck.html" class="nav-button">목록으로 돌아가기</a>
     </div>
 
-    <script>
-        /* 메뉴를 여는 함수 */
-        function openNav() {
-            document.getElementById("myMenu").style.width = "250px";
-        }
-
-        /* 메뉴를 닫는 함수 */
-        function closeNav() {
-            document.getElementById("myMenu").style.width = "0";
-        }
-    </script>
 </body>
 </html>
