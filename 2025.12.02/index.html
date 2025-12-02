@@ -29,6 +29,78 @@
         .test{
             line-height: 5;
         }
+
+
+/* direction 속성 예제 6.7.1 */
+
+        .ltr{
+            direction: ltr; /* == left to right*/
+            border: 1px solid #000;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        .rtl{
+            direction: rtl;
+            border: 1px solid #000;
+            padding: 10px;
+        }
+
+        /* Font 속성 예제 6.8.4 */
+
+        .text1{
+            font-family: 'Arial', sans-serif;
+            font-size: 18px;
+            font-style: italic;
+            font-weight: bold;
+            line-height: 1.6;
+        }
+
+        .text2{
+            font: italic bold 16px/1.5 '맑은 고딕', sans-serif;
+        }
+
+/*  */
+
+        body{
+            font-family: 'Noto Sans KR', Arial, sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        .title{
+            font-weight: bold;
+            font-size: 24px;
+            font-style: italic;
+        }
+        .smallcaps{
+            font-variant: small-caps;
+        }
+        .mono{
+            font-family: 'Courier New', monospace;
+        }
+        .short{
+            font: normal 14px/1.5 'Roboto, sans-serif';
+        }
+
+/*  */
+
+        .default{
+            font: 16px/normal 'Noto Sans KR', sans-serif;
+            background-color: #f0f0f0;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        .custom{
+            font: 16px/1.5 'Noto Sans KR', sans-serif;
+            background-color: #e0f7fa;
+            padding: 10px;
+        }
+        .fixed{
+            font: 16px/24px 'Noto Sans KR', sans-serif;
+            background-color: #fff3e0;
+            padding: 10px;
+            margin-top: 20px;
+        }
+
     </style>
 </head>
 <body>
@@ -59,5 +131,48 @@
         이정도로 넓직합니다.
     </div>
 
+<!-- 6.7.1 속성 예제 -->
+
+    <div class="ltr">
+        <strong>direction:ltr;</strong><br>
+        Hello, world! 안녕하세요!
+    </div>
+    
+    <div class="rtl">
+        <strong>direction:rtl;</strong><br>
+        Hello, world! 안녕하세요!
+    </div>
+
+<!-- 6.8.5 속성 예제 -->
+
+    <p class="text1">이 문장은 Arial 글꼴, 기울임체, 굵게, 줄간격 1.6으로 설정되어 있습니다.</p>
+    <p class="text2">이 문장은 축약형 font 속성으로 지정한 문자입니다.</p>
+
+<!-- 6.8.6 속성 예제 -->
+
+    <h1 class="title">폰트 속성 예제</h1>
+    <p>이 문장은 기본 폰트와 줄 간격을 적용한 예입니다.</p>
+    <p class="smallcaps">This text uses small-caps.</p>
+    <p class="mono">코드 스타일 : const value = 123;</p>
+    <p class="short">축약형 font 속성을 사용한 문장입니다.</p>
+
+    <!--  -->
+
+    <h1> line-height(normal)</h1>
+    <p class="default">
+        이 문장은 line-height: normal울 사용한 경우입니다.
+        줄과 줄 사이 간격은 폰트와 브라우저 설정에 따라 다르며, 약 1.2~1.4배 입니다.
+    </p>
+    <h1> line-height(1.5)</h1>
+    <p class="custom">
+        이 문장은 font: 16px/1.5를 사용한 경우입니다.
+        줄 간격이 글자 크기 16px의 1.5배인 24px로 설정됩니다.
+    </p>
+    <h1> line-height(24px)</h1>
+    <p class="fixed">
+        이 문장은 line-height: 24px로 <strong>고정된 줄간격</strong>을 사용합니다.
+        크기에 관계없이 항상 24px입니다.
+    </p>
+    
 </body>
 </html>
